@@ -42,23 +42,14 @@ DarkerDawnTheme class >> lightSelectionColor [
 	^ self baseSelectionColor lighter
 ]
 
-{ #category : #settings }
-DarkerDawnTheme class >> newDefaultSettings [
-	self setPreferredPreferences.
-	^ super newDefaultSettings
-		"menuColor: self baseColor lighter;"
-		menuTitleColor: self baseColor lighter;
-		"windowColor: self baseColor;"
-		"selectionColor: self lightSelectionColor;"
-		"menuSelectionColor: self baseSelectionColor;"
-		menuSelectionTextColor: self baseTextColor darker";"
-		"progressBarColor: self baseColor;"
-		"standardColorsOnly: true;"
-		"autoSelectionColor: false;"
-		"preferRoundCorner: false;"
-		"fadedBackgroundWindows: false;"
-		"secondarySelectionColor: self veryLightSelectionColor;"
-		"flatMenu: true"
+{ #category : #accessing }
+DarkerDawnTheme class >> menuSelectionTextColor [ 
+	^ self baseTextColor darker	
+]
+
+{ #category : #accessing }
+DarkerDawnTheme class >> menuTitleColor [ 
+	^ self baseColor lighter
 ]
 
 { #category : #accessing }
@@ -79,7 +70,8 @@ DarkerDawnTheme >> balloonBackgroundColor [
 
 { #category : #'accessing colors' }
 DarkerDawnTheme >> borderColor [
-	^ self class darkBaseColor adjustBrightness: -0.04
+	"^ self class baseColor adjustBrightness: 0.04"
+	^ self class baseColor lighter
 ]
 
 { #category : #'border-styles' }
@@ -102,6 +94,11 @@ DarkerDawnTheme >> desktopColor [
 	^ self backgroundColor darker 
 ]
 
+{ #category : #accessing }
+DarkerDawnTheme >> fadedBackgroundWindows [
+	^ true
+]
+
 { #category : #'growl - specific' }
 DarkerDawnTheme >> growlBorderColorFor: aGrowlMorph [
 	^ self borderColor alpha: 0.5 
@@ -116,6 +113,24 @@ DarkerDawnTheme >> growlFillColorFor: aGrowlMorph [
 DarkerDawnTheme >> lightBackgroundColor [
 	^ Color r: 16r37 g: 16r37 b: 16r28 range: 16rff
 
+]
+
+{ #category : #defaults }
+DarkerDawnTheme >> menuItemSelectedTextColorFor: aMenuItem [
+	"Answer the color to use for selected menu item text."
+
+	^ self class menuSelectionTextColor
+]
+
+{ #category : #'accessing colors' }
+DarkerDawnTheme >> menuTitleColor [
+	"Answer the menu title color to use."
+	^self class menuTitleColor
+]
+
+{ #category : #'fill-styles-menubar' }
+DarkerDawnTheme >> menubarItemSelectionTextColorFor: aMenubarItem [
+	^ self class menuSelectionTextColor
 ]
 
 { #category : #'border-styles-scrollbars' }

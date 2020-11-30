@@ -16,22 +16,24 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			"(symbol color [emphasisSymbolOrArray [textStyleName [pixelHeight]]])" 
 			(default 								white)
 			(invalid 								'EE3F08' bold)
-			(excessCode 							'EE3F08' bold )
+			(excessCode 							'EE3F08' bold)
 			
-			(comment 								'72725e' italic)
-			(unfinishedComment 				'72725e')
+			(comment 								'72725e')
+			(unfinishedComment 				'72725e' italic)
 			
-			(#'$' 									'ef29ef' bold)
-			(character 							'ef29ef' bold)
-			(integer 								'E8E187' bold)
-			(number 								'E8E187' bold)
-			(#- 									('8ae234'))
-			(symbol 								('FFA180')) 
-			(stringSymbol 						('FFA180')) 
+			(#'$' 									'ef29ef')
+			(character 							'ef29ef')
+			(integer 								'E8E187')
+			(number 								'E8E187')
+
+			(#- 									'8ae234')
+			(symbol 								'FFA180') 
+			(stringSymbol 						'FFA180') 
 			(literalArray 						white)
-			(string 								('babdb6'))
-												
-			(unfinishedString 					'babdb6' italic)
+
+			(string 								'cacda6')									
+			(unfinishedString 					'cacda6' italic)
+
 			(assignment 							nil bold)
 			(ansiAssignment 					nil bold)
 										
@@ -41,9 +43,9 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(binary 								'729fcf') 
 			(unary 								'729fcf')
 										
-			(#true 								'9ffc3d' bold )
-			(#false 								'629928' bold )
-			(#nil 									'629928' bold )
+			(#true 								'9ffc3d')
+			(#false 								'629928')
+			(#nil 									'629928')
 													
 			(#self 								'ECC284' bold)
 			(#super								'ECC284' bold)
@@ -60,15 +62,14 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 								
 			(instVar 								'ECC284')
 			(workspaceVar 						'ECC284' italic)
-										
+		
 			(tempVar 								'ECC284' italic)
 			(patternTempVar 					'ECC284' italic)
-										
+
 			(poolConstant 						'A7E2ED' bold)
 			(classVar 							'CEEAA7' bold)
 			(globalVar 							'fcaf3e' bold)
 												
-		
 			(incompleteIdentifier 			'E8E2B7' italic)
 			(incompleteKeyword 				'E8E2B7' italic)
 			(incompleteBinary 					'E8E2B7' italic) 
@@ -83,6 +84,7 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(patternBinary 						'729fcf' bold)
 			(patternUnary 						'729fcf' bold) 
 			(blockArgColon 						'ECC284' italic)
+
 			(leftParenthesis 					white)
 			(rightParenthesis 					white)
 			(leftParenthesis1 					(green muchLighter))
@@ -99,6 +101,7 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(rightParenthesis6 				(magenta lighter))
 			(leftParenthesis7 					blue)
 			(rightParenthesis7 				blue)
+
 			(blockStart 							white bold)
 			(blockEnd 							white bold)
 			(blockStart1 						(green muchLighter))
@@ -115,10 +118,17 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(blockEnd6 							(magenta lighter))
 			(blockStart7 						blue)
 			(blockEnd7 							blue) 
+
 			(arrayStart 							white)
 			(arrayEnd 							white)
 			(arrayStart1 						white)
 			(arrayEnd1 							white)
+
+			(byteArrayStart 					'8BEDFF')
+			(byteArrayEnd 						'8BEDFF')
+			(byteArrayStart1 					'8BEDFF')
+			(byteArrayEnd1 						'8BEDFF')
+
 			(leftBrace 							white)
 			(rightBrace 							white)
 			(cascadeSeparator 					white bold)
@@ -136,5 +146,6 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(pragmaUnary 									'B4DD6E')
 			(pragmaBinary 									'B4DD6E') 
 			(externalFunctionCallingConvention 		'B4DD6E' bold)
-			(module 											'B4DD6E' bold))
+			(module 											'B4DD6E' bold)
+    )
 ]
