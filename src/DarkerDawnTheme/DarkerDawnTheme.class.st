@@ -162,6 +162,20 @@ DarkerDawnTheme >> shStyleTableName [
 	^ #darkerDawnStyleTable
 ]
 
+{ #category : #'accessing colors' }
+DarkerDawnTheme >> tabColor [
+	^ self backgroundColor
+]
+
+{ #category : #'fill-styles-buttons' }
+DarkerDawnTheme >> tabLabelNormalFillStyleFor: aTabLabel [
+	"Return the normal button fillStyle for the given button."
+	
+	(aTabLabel valueOfProperty: #noFill ifAbsent: [false]) 
+		ifTrue: [ ^ SolidFillStyle color: Color transparent ].
+	^ SolidFillStyle color: self tabColor
+]
+
 { #category : #'fill-styles-taskbar' }
 DarkerDawnTheme >> taskbarFillStyleFor: aTaskbar [
 	^ SolidFillStyle color: (self backgroundColor alpha: 0.75)
