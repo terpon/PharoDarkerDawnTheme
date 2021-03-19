@@ -11,12 +11,7 @@ Class {
 BaselineOfDarkerDawnTheme >> baseline: spec [ 
 	<baseline>
 	
-	spec for: #pharo do: [
+	spec for: #common do: [
 		spec package: 'DarkerDawnTheme'
 	] 
-]
-
-{ #category : #accessing }
-BaselineOfDarkerDawnTheme >> projectClass [
-	^ MetacelloCypressBaselineProject
 ]
