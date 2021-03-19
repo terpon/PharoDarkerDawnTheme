@@ -23,11 +23,6 @@ DarkerDawnTheme class >> baseSelectionColor [
 ]
 
 { #category : #accessing }
-DarkerDawnTheme class >> baseTextColor [
-	^ Color white	
-]
-
-{ #category : #accessing }
 DarkerDawnTheme class >> darkBaseColor [
 	^ self baseColor
 ]
@@ -40,16 +35,6 @@ DarkerDawnTheme class >> lightBaseColor [
 { #category : #accessing }
 DarkerDawnTheme class >> lightSelectionColor [
 	^ self baseSelectionColor lighter
-]
-
-{ #category : #accessing }
-DarkerDawnTheme class >> menuSelectionTextColor [ 
-	^ self baseTextColor darker	
-]
-
-{ #category : #accessing }
-DarkerDawnTheme class >> menuTitleColor [ 
-	^ self baseColor lighter
 ]
 
 { #category : #accessing }
@@ -70,13 +55,13 @@ DarkerDawnTheme >> balloonBackgroundColor [
 
 { #category : #'accessing colors' }
 DarkerDawnTheme >> borderColor [
-	"^ self class baseColor adjustBrightness: 0.04"
-	^ self class baseColor lighter
+	^ self class baseColor adjustBrightness: 0.16
+	"^ self class baseColor lighter"
 ]
 
 { #category : #'border-styles' }
 DarkerDawnTheme >> buttonBorderStyleFor: aButton [
-	aButton borderStyle: (BorderStyle width: 1 color: self borderColor)
+	aButton borderStyle: (BorderStyle width: 1 color: self class baseColor lighter)
 ]
 
 { #category : #'accessing colors' }
@@ -119,18 +104,23 @@ DarkerDawnTheme >> lightBackgroundColor [
 DarkerDawnTheme >> menuItemSelectedTextColorFor: aMenuItem [
 	"Answer the color to use for selected menu item text."
 
-	^ self class menuSelectionTextColor
+	^ self menuSelectionTextColor
+]
+
+{ #category : #accessing }
+DarkerDawnTheme >> menuSelectionTextColor [ 
+	^ self textColor darker	
 ]
 
 { #category : #'accessing colors' }
 DarkerDawnTheme >> menuTitleColor [
 	"Answer the menu title color to use."
-	^self class menuTitleColor
+	^ self class baseColor lighter
 ]
 
 { #category : #'fill-styles-menubar' }
 DarkerDawnTheme >> menubarItemSelectionTextColorFor: aMenubarItem [
-	^ self class menuSelectionTextColor
+	^ self menuSelectionTextColor
 ]
 
 { #category : #'border-styles-scrollbars' }
