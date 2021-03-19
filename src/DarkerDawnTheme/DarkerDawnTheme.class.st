@@ -56,7 +56,6 @@ DarkerDawnTheme >> balloonBackgroundColor [
 { #category : #'accessing colors' }
 DarkerDawnTheme >> borderColor [
 	^ self class baseColor adjustBrightness: 0.16
-	"^ self class baseColor lighter"
 ]
 
 { #category : #'border-styles' }
@@ -71,7 +70,8 @@ DarkerDawnTheme >> buttonColor [
 
 { #category : #'accessing colors' }
 DarkerDawnTheme >> caretColor [
-	^ self backgroundColor muchLighter
+	^ Color r: 16rFF g: 16rFF b: 16r77 range: 16rff
+
 ]
 
 { #category : #'fill-styles' }
@@ -92,6 +92,12 @@ DarkerDawnTheme >> growlBorderColorFor: aGrowlMorph [
 { #category : #'growl - specific' }
 DarkerDawnTheme >> growlFillColorFor: aGrowlMorph [
 	^ self lightBackgroundColor alpha: 0.5 
+]
+
+{ #category : #'basic-colors' }
+DarkerDawnTheme >> inactiveTextColor [
+   ^ Color r: 16r95 g: 16r8E b: 16r51 range: 16rff
+
 ]
 
 { #category : #'accessing colors' }
@@ -171,6 +177,17 @@ DarkerDawnTheme >> taskbarFillStyleFor: aTaskbar [
 	^ SolidFillStyle color: (self backgroundColor alpha: 0.75)
 ]
 
+{ #category : #'basic-colors' }
+DarkerDawnTheme >> taskbarItemLabelColorForCollapsed: aButton [
+   ^ self inactiveTextColor
+
+]
+
+{ #category : #'basic-colors' }
+DarkerDawnTheme >> taskbarItemLabelColorForExpanded: aButton [
+	^ self textColor
+]
+
 { #category : #'accessing colors' }
 DarkerDawnTheme >> textColor [
 	^ Color r: 16rFC g: 16rF3 b: 16rD7 range: 16rff
@@ -179,6 +196,10 @@ DarkerDawnTheme >> textColor [
 
 { #category : #'fill-styles' }
 DarkerDawnTheme >> windowInactiveFillStyleFor: aWindow [
-	"We do not want the lighting effect when the window goes inactive"
-	^SolidFillStyle color: (self class baseColor adjustBrightness: -0.04)
+	^ SolidFillStyle color: (self class baseColor adjustBrightness: -0.045)
+]
+
+{ #category : #'fill-styles' }
+DarkerDawnTheme >> windowInactiveLabelFillStyleFor: aWindow [
+	^ self inactiveTextColor
 ]
