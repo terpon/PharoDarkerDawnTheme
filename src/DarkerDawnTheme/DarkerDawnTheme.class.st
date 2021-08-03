@@ -8,13 +8,18 @@ Class {
 }
 
 { #category : #accessing }
+DarkerDawnTheme class >> accentColor [
+	^ Color  r: 16rc7 g: 16r51 b: 16r00 range: 16rff
+]
+
+{ #category : #accessing }
 DarkerDawnTheme class >> baseColor [
-	^ Color r: 16r29 g: 16r29 b: 16r22 range: 16rFF
+	^ Color r: 16r19 g: 16r19 b: 16r0b range: 16rFF
 ]
 
 { #category : #accessing }
 DarkerDawnTheme class >> basePassiveBackgroundColor [
-	^ self baseColor lighter
+	^ self baseColor adjustBrightness: 0.08
 ]
 
 { #category : #accessing }
@@ -24,17 +29,17 @@ DarkerDawnTheme class >> baseSelectionColor [
 
 { #category : #accessing }
 DarkerDawnTheme class >> darkBaseColor [
-	^ self baseColor
+	^ self baseColor adjustBrightness: -0.025
 ]
 
 { #category : #accessing }
 DarkerDawnTheme class >> lightBaseColor [
-	^ self baseColor lighter
+	^ self baseColor adjustBrightness: 0.025
 ]
 
 { #category : #accessing }
 DarkerDawnTheme class >> lightSelectionColor [
-	^ self baseSelectionColor lighter
+	^ self baseSelectionColor adjustBrightness: 0.16
 ]
 
 { #category : #accessing }
@@ -42,41 +47,46 @@ DarkerDawnTheme class >> themeName [
 	^ 'Darker Dawn'
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> backgroundColor [
-	^ Color r: 16r27 g: 16r26 b: 16r20 range: 16rff
+	^ self class baseColor
 
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> balloonBackgroundColor [
-	^ self backgroundColor lighter
+	^ self backgroundColor adjustBrightness: 0.04
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> borderColor [
 	^ self class baseColor adjustBrightness: 0.16
 ]
 
 { #category : #'border-styles' }
 DarkerDawnTheme >> buttonBorderStyleFor: aButton [
-	aButton borderStyle: (BorderStyle width: 1 color: self class baseColor lighter)
+	aButton borderStyle: (BorderStyle width: 1 color: self borderColor)
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> buttonColor [
-	^ self backgroundColor lighter
+	^ self backgroundColor adjustBrightness: 0.10
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> caretColor [
 	^ Color r: 16rFF g: 16rFF b: 16r77 range: 16rff
 
 ]
 
+{ #category : #'accessing - colors' }
+DarkerDawnTheme >> defaultButtonBorderColor [ 
+	^ self class accentColor 
+]
+
 { #category : #'fill-styles' }
 DarkerDawnTheme >> desktopColor [
-	^ self backgroundColor darker 
+	^ Color black
 ]
 
 { #category : #accessing }
@@ -100,10 +110,15 @@ DarkerDawnTheme >> inactiveTextColor [
 
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> lightBackgroundColor [
-	^ Color r: 16r37 g: 16r37 b: 16r28 range: 16rff
+	^ self class lightBaseColor 
 
+]
+
+{ #category : #'accessing - colors' }
+DarkerDawnTheme >> lineNumberColor [ 
+	^ self class accentColor 
 ]
 
 { #category : #defaults }
@@ -118,10 +133,10 @@ DarkerDawnTheme >> menuSelectionTextColor [
 	^ self textColor darker	
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> menuTitleColor [
 	"Answer the menu title color to use."
-	^ self class baseColor lighter
+	^ self lightBackgroundColor 
 ]
 
 { #category : #'fill-styles-menubar' }
@@ -133,22 +148,22 @@ DarkerDawnTheme >> menubarItemSelectionTextColorFor: aMenubarItem [
 DarkerDawnTheme >> scrollbarNormalFillStyleFor: aScrollbar [
 	"Return the normal scrollbar fillStyle for the given scrollbar."
 	
-	^ SolidFillStyle color: self backgroundColor darker.
+	^ SolidFillStyle color: self class darkBaseColor 
 ]
 
-{ #category : #'fill-styles-scrollbars' }
+{ #category : #'border-styles-scrollbars' }
 DarkerDawnTheme >> scrollbarPressedThumbFillStyleFor: aScrollbar [
 	"Return the pressed scrollbar thumb fillStyle for the given scrollbar."
 
-	^ SolidFillStyle color: self backgroundColor lighter lighter
+	^ SolidFillStyle color: self class lightBaseColor 
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> secondarySelectionColor [
 	^ self selectionColor darker
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> selectionColor [
 	^ self class baseSelectionColor
 ]
@@ -158,7 +173,7 @@ DarkerDawnTheme >> shStyleTableName [
 	^ #darkerDawnStyleTable
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> tabColor [
 	^ self backgroundColor
 ]
@@ -188,7 +203,7 @@ DarkerDawnTheme >> taskbarItemLabelColorForExpanded: aButton [
 	^ self textColor
 ]
 
-{ #category : #'accessing colors' }
+{ #category : #'accessing - colors' }
 DarkerDawnTheme >> textColor [
 	^ Color r: 16rFC g: 16rF3 b: 16rD7 range: 16rff
 
@@ -202,4 +217,9 @@ DarkerDawnTheme >> windowInactiveFillStyleFor: aWindow [
 { #category : #'fill-styles' }
 DarkerDawnTheme >> windowInactiveLabelFillStyleFor: aWindow [
 	^ self inactiveTextColor
+]
+
+{ #category : #'accessing - colors' }
+DarkerDawnTheme >> windowShadowColor [
+	^ self class accentColor
 ]
