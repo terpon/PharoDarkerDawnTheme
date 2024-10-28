@@ -1,1 +1,1 @@
-Package { #name : #DarkerDawnTheme }
+Package { #name : 'DarkerDawnTheme' }
