@@ -8,16 +8,6 @@ Class {
 	#package : 'DarkerDawnTheme'
 }
 
-{ #category : 'accessing' }
-DarkerDawnTheme class >> baseColor [
-	^ self  colorConfiguratorClass  baseColor
-]
-
-{ #category : 'accessing' }
-DarkerDawnTheme class >> borderColor [
-	^ self  colorConfiguratorClass  borderColor
-]
-
 { #category : 'configuration' }
 DarkerDawnTheme class >> colorConfiguratorClass [
 
@@ -35,12 +25,6 @@ DarkerDawnTheme class >> isAbstract [
 	^ false
 ]
 
-{ #category : 'basic-colors' }
-DarkerDawnTheme class >> textColor [
-   ^ self colorConfiguratorClass textColor 
-
-]
-
 { #category : 'accessing' }
 DarkerDawnTheme class >> themeName [
 	^ 'DarkerDawn'
@@ -52,6 +36,13 @@ DarkerDawnTheme >> badgeColor [
 	^ colorPalette badgeColor
 ]
 
+{ #category : 'fill-styles - buttons' }
+DarkerDawnTheme >> buttonMouseOverFillStyleFor: aButton [
+	"Return the button mouse over fillStyle for the given color."
+
+	^ SolidFillStyle color: self borderColor 
+]
+
 { #category : 'accessing' }
 DarkerDawnTheme >> fadedBackgroundWindows [
 	^ true
@@ -59,13 +50,13 @@ DarkerDawnTheme >> fadedBackgroundWindows [
 
 { #category : 'accessing' }
 DarkerDawnTheme >> menuSelectionTextColor [ 
-	^ self class textColor darker	
+	^ self textColor darker	
 ]
 
 { #category : 'fill-styles' }
 DarkerDawnTheme >> progressBarProgressFillColor [
 
-	^ self class borderColor darker
+	^ self  borderColor darker
 ]
 
 { #category : 'defaults' }
@@ -75,7 +66,7 @@ DarkerDawnTheme >> shStyleTableName [
 
 { #category : 'accessing - colors' }
 DarkerDawnTheme >> tabColor [
-	^ self class  baseColor
+	^ self  baseColor
 ]
 
 { #category : 'fill-styles-buttons' }
@@ -89,12 +80,12 @@ DarkerDawnTheme >> tabLabelNormalFillStyleFor: aTabLabel [
 
 { #category : 'fill-styles - taskbar' }
 DarkerDawnTheme >> taskbarFillStyleFor: aTaskbar [
-	^ SolidFillStyle color: (self class baseColor alpha: 0.75)
+	^ SolidFillStyle color: (self baseColor alpha: 0.75)
 ]
 
 { #category : 'fill-styles' }
 DarkerDawnTheme >> windowActiveFillStyle [
-	^ SolidFillStyle color: (self class baseColor adjustBrightness: -0.045)
+	^ SolidFillStyle color: (self baseColor adjustBrightness: -0.045)
 ]
 
 { #category : 'fill-styles' }

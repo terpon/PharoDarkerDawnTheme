@@ -1,3 +1,6 @@
+"
+Color used by the `DarkerDawnTheme`
+"
 Class {
 	#name : 'DarkerDawnColorConfigurator',
 	#superclass : 'DarkThemeColorConfigurator',
@@ -5,25 +8,9 @@ Class {
 	#package : 'DarkerDawnTheme'
 }
 
-{ #category : 'colors' }
-DarkerDawnColorConfigurator class >> baseColor [
-	^ Color r: 16r19 g: 16r19 b: 16r0b range: 16rFF
-]
-
-{ #category : 'colors' }
-DarkerDawnColorConfigurator class >> borderColor [
-	^ Color r: 16rD9 g: 16rA9 b: 16r2B range: 16rFF
-]
-
 { #category : 'basic-colors' }
 DarkerDawnColorConfigurator class >> inactiveTextColor [
    ^ Color r: 16r95 g: 16r8E b: 16r51 range: 16rff
-
-]
-
-{ #category : 'colors' }
-DarkerDawnColorConfigurator class >> textColor [
-	^ Color r: 16rFC g: 16rF3 b: 16rD7 range: 16rff
 
 ]
 
@@ -51,7 +38,7 @@ DarkerDawnColorConfigurator >> balloonBackgroundColor [
 
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> baseColor [
-	^ self class baseColor
+	^ Color r: 16r19 g: 16r19 b: 16r0b range: 16rFF
 ]
 
 { #category : 'colors' }
@@ -65,8 +52,8 @@ DarkerDawnColorConfigurator >> baseSelectionColor [
 ]
 
 { #category : 'colors' }
-DarkerDawnColorConfigurator >> borderColor [
-	^ self class borderColor
+DarkerDawnColorConfigurator >> borderColor [ 
+	^ Color r: 16rD9 g: 16rA9 b: 16r2B range: 16rFF
 ]
 
 { #category : 'colors' }
@@ -169,7 +156,8 @@ DarkerDawnColorConfigurator >> taskbarItemLabelColorForExpanded: aButton [
 
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> textColor [
-	^ self class textColor
+	^ Color r: 16rFC g: 16rF3 b: 16rD7 range: 16rff
+
 ]
 
 { #category : 'windows' }
