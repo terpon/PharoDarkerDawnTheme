@@ -36,13 +36,6 @@ DarkerDawnTheme >> badgeColor [
 	^ colorPalette badgeColor
 ]
 
-{ #category : 'fill-styles - buttons' }
-DarkerDawnTheme >> buttonMouseOverFillStyleFor: aButton [
-	"Return the button mouse over fillStyle for the given color."
-
-	^ SolidFillStyle color: self borderColor 
-]
-
 { #category : 'accessing' }
 DarkerDawnTheme >> fadedBackgroundWindows [
 	^ true
@@ -51,6 +44,22 @@ DarkerDawnTheme >> fadedBackgroundWindows [
 { #category : 'accessing' }
 DarkerDawnTheme >> menuSelectionTextColor [ 
 	^ self textColor darker	
+]
+
+{ #category : 'private' }
+DarkerDawnTheme >> newFormSetsForScale: scale [
+
+	| size color colorWhite |
+
+	size := (9 * scale) truncated.
+	color := self buttonColor.
+	colorWhite := self borderColor.
+	^ Dictionary new
+		at: #treeExpanded put: (self newTreeFormSet: true size: size color: color);
+		at: #treeUnexpanded put: (self newTreeFormSet: false size: size color: color);
+		at: #whiteTreeExpanded put: (self newTreeFormSet: true size: size color: colorWhite);
+		at: #whiteTreeUnexpanded put: (self newTreeFormSet: false size: size color: colorWhite );
+		yourself
 ]
 
 { #category : 'fill-styles' }

@@ -58,7 +58,7 @@ DarkerDawnColorConfigurator >> borderColor [
 
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> buttonColor [
-	^ self backgroundColor adjustBrightness: 0.10
+	^ Color r: 16r79 g: 16r59 b: 16r1b range: 16rFF
 ]
 
 { #category : 'colors' }
