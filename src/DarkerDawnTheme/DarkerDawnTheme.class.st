@@ -36,6 +36,18 @@ DarkerDawnTheme >> badgeColor [
 	^ colorPalette badgeColor
 ]
 
+{ #category : 'border-styles - buttons' }
+DarkerDawnTheme >> buttonNormalBorderStyleFor: aButton [
+	"Return the normal button borderStyle for the given button."
+	(aButton valueOfProperty: #noBorder ifAbsent: [ false ]) ifTrue: [
+		^ SimpleBorderStyle new
+			  width: 0;
+			  baseColor: Color transparent ].
+	^ SimpleBorderStyle new
+		  width: 1 scaledByDisplayScaleFactor;
+		  baseColor: self lightBaseColor 
+]
+
 { #category : 'accessing' }
 DarkerDawnTheme >> fadedBackgroundWindows [
 	^ true
