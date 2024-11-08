@@ -12,8 +12,8 @@ Class {
 		'sourceDirectory',
 		'convertedDirectory',
 		'rasterDirectory',
-		'zipDirectory',
-		'shouldRegenerateAll'
+		'shouldRegenerateAll',
+		'zipFile'
 	],
 	#category : 'DarkerDawnTheme-Tools-Generation',
 	#package : 'DarkerDawnTheme-Tools',
@@ -550,31 +550,30 @@ DarkerDawnColorConverter >> sourceDirectory: anObject [
 ]
 
 { #category : 'accessing' }
-DarkerDawnColorConverter >> zipDirectory [
+DarkerDawnColorConverter >> zipFile [ 
 
-	^ zipDirectory ifNil: [ zipDirectory := ThemeIcons destinationPath ]
+	^ zipFile ifNil: [ zipFile := ThemeIcons destinationPath / 'darkDawn.zip' ]
 ]
 
 { #category : 'accessing' }
-DarkerDawnColorConverter >> zipDirectory: anObject [
+DarkerDawnColorConverter >> zipFile: anObject [
 
-	zipDirectory := anObject
+	zipFile := anObject
 ]
 
 { #category : 'converting' }
 DarkerDawnColorConverter >> zipIconPacks [
 
-	self zipDirectory parent ensureCreateDirectory.
-	self scales do: [ :scale |
-	| src zipRef theZip |
-	
-	zipRef := self zipDirectory / ('darkDawn-{1}.zip' format: scale ).
-	zipRef ensureDelete.
-	src := self directoryForScale: scale.
+	| theZip |
+	self zipFile parent ensureCreateDirectory.
+	self zipFile ensureDelete.
 	theZip := ZipArchive new.
-	src children do: [ :eachFile | theZip addFile: eachFile resolve as: eachFile baseName ]
-		displayingProgress: [ :f | 'Archiving icon {1}' format: { f baseName printString } ].
-	theZip writeToFile: zipRef.
+	
+	self scales do: [ :scale |
+		| subdir  |
+		subdir := self directoryForScale: scale.
+		theZip addTree: subdir relativeTo: (subdir parent) match: [ :e | true ].
+	].
+	theZip writeToFile: self zipFile.
 	theZip close
-	]
 ]
