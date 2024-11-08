@@ -10,8 +10,9 @@ Class {
 		'scales',
 		'inkscapePath',
 		'sourceDirectory',
-		'rasterDirectory',
 		'convertedDirectory',
+		'rasterDirectory',
+		'zipDirectory',
 		'shouldRegenerateAll'
 	],
 	#category : 'DarkerDawnTheme-Tools-Generation',
@@ -37,8 +38,8 @@ DarkerDawnColorConverter >> colorMappings [
 	( '#388bb9' ternaryAccentColor ) 
 	( '#(4892bc|4792bc|507d94)' accentColor ) 
 	( '#5[1-6](9[def]|a[012])c[1-6]' accentColorDarker )
-	( '#55a2ca' ternaryAccentColor ) 
-	( '#b4d5e8' darkTernaryAccentColor ) 
+	( '#(55a2ca|479cd3)' ternaryAccentColor ) 
+	( '#(b4d5e8|a8d9f5)' darkTernaryAccentColor ) 
 	"radio button & check box"
 	( '#546075' selectedButtonColor  )
 	( '#8b96ab' buttonColor  )
@@ -89,6 +90,12 @@ DarkerDawnColorConverter >> convertedDirectory: anObject [
 { #category : 'accessing - data' }
 DarkerDawnColorConverter >> dataSource [
 ^ dataSource ifNil: [ dataSource := DarkerDawnColorConfigurator new ]
+]
+
+{ #category : 'accessing - data' }
+DarkerDawnColorConverter >> directoryForScale: aFactor [
+
+^ self rasterDirectory / ('png-scale' , aFactor asString)
 ]
 
 { #category : 'accessing - data' }
@@ -436,42 +443,14 @@ DarkerDawnColorConverter >> rasterDirectory: anObject [
 
 { #category : 'converting' }
 DarkerDawnColorConverter >> rasterize [
-self scales
-	do: [ :scale |
-		| targetDirectoryReference |
-		targetDirectoryReference := self rasterDirectory / ('png-scale' , scale asString).
-		self shouldRegenerateAll ifTrue: [ targetDirectoryReference ensureDeleteAllChildren ].
-		self iconDescriptions 
-			do: [ :icon |
-				icon bind: [ :name :width :height |
-					| targetPNGReference sourceSVGReference arguments |
-					targetPNGReference := targetDirectoryReference / (name , '.png').
-					targetPNGReference exists ifFalse: [
-						targetDirectoryReference ensureCreateDirectory.
-						sourceSVGReference := self convertedDirectory / (name , '.svg').
-						arguments := { 
-							'--export-filename'. targetPNGReference fullName. 
-							'-w'. (width * scale) rounded asString. 
-							'-h'. (height * scale) rounded asString.
-							sourceSVGReference fullName }.
-						self runInkscapeWith: arguments.
-						targetPNGReference exists ifFalse: [ Error signal: 'Could not generate PNG file' ] ] ] ]
-			displayingProgress: [ :icon | 'Generating icon {1}' format: { icon first printString } ] ]
-	displayingProgress: [ :scale | 'Generating icons for scale {1}' format: { scale } ]
-]
-
-{ #category : 'converting' }
-DarkerDawnColorConverter >> rasterize2 [
-| inkscape logFileReference shouldRegenerateAll |
+| inkscape logFileReference |
 inkscape := self inkscapePath asFileReference fullName.
 logFileReference := (FileLocator imageDirectory / 'inkscape.log') fullName.
-shouldRegenerateAll := false.
-
 self scales
 	do: [ :scale |
 		| targetDirectoryReference |
-		targetDirectoryReference := self rasterDirectory / ('png-scale' , scale asString).
-		shouldRegenerateAll ifTrue: [ targetDirectoryReference ensureDeleteAllChildren ].
+		targetDirectoryReference := self directoryForScale: scale.
+		self shouldRegenerateAll ifTrue: [ targetDirectoryReference ensureDeleteAllChildren ].
 		self iconDescriptions 
 			do: [ :icon |
 				icon bind: [ :name :width :height |
@@ -480,8 +459,8 @@ self scales
 					targetPNGReference exists ifFalse: [
 						targetDirectoryReference ensureCreateDirectory.
 						sourceSVGReference := self convertedDirectory / (name , '.svg').
-						shellCommand := '(set -x && {1} --export-filename {2} -w {3} -h {4} {5}) 1>>{6} 2>&1' format:
-							({ '/usr/bin/cairosvg' "inkscape". targetPNGReference fullName.
+						shellCommand := 'unset LD_LIBRARY_PATH && (set -x && {1} --export-filename {2} -w {3} -h {4} {5}) 1>>{6} 2>&1' format:
+							({ inkscape. targetPNGReference fullName.
 								(width * scale) rounded asString. (height * scale) rounded asString.
 								sourceSVGReference fullName. logFileReference } collect: [ :argument |
 									'''{1}''' format: { argument copyReplaceAll: '''' with: '''\''''' } ]).
@@ -502,6 +481,15 @@ DarkerDawnColorConverter >> regexes [
 { #category : 'converting' }
 DarkerDawnColorConverter >> replaceColorsIn: aString [
 	^ self regexes inject: aString into: [ :acc :each | each first copy: acc replacingMatchesWith: each second  ] 
+
+]
+
+{ #category : 'running' }
+DarkerDawnColorConverter >> run [
+<script: 'self new run'>
+	self colorizeIcons.
+	self rasterize.
+	self zipIconPacks.
 
 ]
 
@@ -528,7 +516,7 @@ DarkerDawnColorConverter >> runInkscapeWith: aCollection [
 { #category : 'accessing' }
 DarkerDawnColorConverter >> scales [
 
-	^ scales ifNil: [ scales := #(1.0) "#(1.0 1.5 2.0)" ]
+	^ scales ifNil: [ scales := #(1.0 2.0) "#(1.0 1.5 2.0)" ]
 ]
 
 { #category : 'accessing' }
@@ -559,4 +547,34 @@ DarkerDawnColorConverter >> sourceDirectory [
 DarkerDawnColorConverter >> sourceDirectory: anObject [
 
 	sourceDirectory := anObject
+]
+
+{ #category : 'accessing' }
+DarkerDawnColorConverter >> zipDirectory [
+
+	^ zipDirectory ifNil: [ zipDirectory := ThemeIcons destinationPath ]
+]
+
+{ #category : 'accessing' }
+DarkerDawnColorConverter >> zipDirectory: anObject [
+
+	zipDirectory := anObject
+]
+
+{ #category : 'converting' }
+DarkerDawnColorConverter >> zipIconPacks [
+
+	self zipDirectory parent ensureCreateDirectory.
+	self scales do: [ :scale |
+	| src zipRef theZip |
+	
+	zipRef := self zipDirectory / ('darkDawn-{1}.zip' format: scale ).
+	zipRef ensureDelete.
+	src := self directoryForScale: scale.
+	theZip := ZipArchive new.
+	src children do: [ :eachFile | theZip addFile: eachFile resolve as: eachFile baseName ]
+		displayingProgress: [ :f | 'Archiving icon {1}' format: { f baseName printString } ].
+	theZip writeToFile: zipRef.
+	theZip close
+	]
 ]
