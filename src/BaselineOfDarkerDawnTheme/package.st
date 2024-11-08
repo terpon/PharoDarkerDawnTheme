@@ -1,1 +1,1 @@
-Package { #name : #BaselineOfDarkerDawnTheme }
+Package { #name : 'BaselineOfDarkerDawnTheme' }
