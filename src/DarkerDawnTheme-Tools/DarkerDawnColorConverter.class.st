@@ -21,17 +21,25 @@ Class {
 }
 
 { #category : 'accessing - data' }
+DarkerDawnColorConverter >> colorMappingRegexes [
+
+^ self colorMappings collect: [ :each |
+		{ each first asRegexIgnoringCase . '#',(self dataSource perform: each second) asHexString asLowercase }
+	] 
+]
+
+{ #category : 'accessing - data' }
 DarkerDawnColorConverter >> colorMappings [
 
 ^ #(
 	"black -> white"
-	( '#000000' borderColor  )
+	( '#0[0-9a-f]0[0-9a-f]0[0-9a-f]' borderColor  )
 	( '#(6[a-f]67[0-4]67[0-4]|7[0-4]7[0-4]7[0-4])' selectedButtonColor ) 
 	( '#(808080|7[a-f]7[a-f]7[a-f])' lightButtonColor  ) 
 	( '#(8[789a-f]8[789a-f]8[789a-f]|9[0-9a-f]9[0-9a-f]9[0-9a-f])' buttonColor ) 
 	( '#a7a7a7' buttonColor  ) 
 	( '#d[0-9a-f]d[0-9a-f]d[0-9a-f]' darkButtonColor ) 
-	( '#(ffffff|fefefe|fbfbfb|f6f9fc)' darkBaseColor  )
+	( '#f[0-9a-f]f[0-9a-f]f[0-9a-f]' darkBaseColor  )
 	"yellow  cogs and elements"
 	( '#b68340' secondaryAccentColor ) 
 	"blue arrows and elements"
@@ -90,6 +98,12 @@ DarkerDawnColorConverter >> convertedDirectory: anObject [
 { #category : 'accessing - data' }
 DarkerDawnColorConverter >> dataSource [
 ^ dataSource ifNil: [ dataSource := DarkerDawnColorConfigurator new ]
+]
+
+{ #category : 'accessing - data' }
+DarkerDawnColorConverter >> defaultStyleRegex [
+
+^ { '^<svg' asRegexIgnoringCase . '<svg style="fill:#{1};fill-opacity:0.99"' format: {self dataSource buttonColor asHexString asLowercase} }
 ]
 
 { #category : 'accessing - data' }
@@ -470,12 +484,10 @@ self scales
 	displayingProgress: [ :scale | 'Generating icons for scale {1}' format: { scale } ]
 ]
 
-{ #category : 'accessing' }
+{ #category : 'accessing - data' }
 DarkerDawnColorConverter >> regexes [
 
-^ regexes ifNil: [ regexes := self colorMappings collect: [ :each |
-		{ each first asRegexIgnoringCase . '#',(self dataSource perform: each second) asHexString asLowercase }
-		] ] 
+^ regexes ifNil: [ regexes := {self defaultStyleRegex}, self colorMappingRegexes ] 
 ]
 
 { #category : 'converting' }
