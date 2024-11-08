@@ -4,8 +4,9 @@ Dark theme based on Pharo Dawn Theme
 Class {
 	#name : 'DarkerDawnTheme',
 	#superclass : 'PharoDarkTheme',
-	#category : 'DarkerDawnTheme',
-	#package : 'DarkerDawnTheme'
+	#category : 'DarkerDawnTheme-Theme',
+	#package : 'DarkerDawnTheme',
+	#tag : 'Theme'
 }
 
 { #category : 'configuration' }

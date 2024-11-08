@@ -4,8 +4,9 @@ Color used by the `DarkerDawnTheme`
 Class {
 	#name : 'DarkerDawnColorConfigurator',
 	#superclass : 'DarkThemeColorConfigurator',
-	#category : 'DarkerDawnTheme',
-	#package : 'DarkerDawnTheme'
+	#category : 'DarkerDawnTheme-Theme',
+	#package : 'DarkerDawnTheme',
+	#tag : 'Theme'
 }
 
 { #category : 'basic-colors' }
@@ -17,6 +18,11 @@ DarkerDawnColorConfigurator class >> inactiveTextColor [
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> accentColor [
 	^ Color  r: 16rc7 g: 16r51 b: 16r00 range: 16rff
+]
+
+{ #category : 'colors' }
+DarkerDawnColorConfigurator >> accentColorDarker [
+	^ Color  r: 16r8C g: 16r39 b: 16r00 range: 16rff
 ]
 
 { #category : 'colors' }
@@ -73,6 +79,16 @@ DarkerDawnColorConfigurator >> darkBaseColor [
 ]
 
 { #category : 'colors' }
+DarkerDawnColorConfigurator >> darkButtonColor [
+	^ self buttonColor darker darker
+]
+
+{ #category : 'colors' }
+DarkerDawnColorConfigurator >> darkTernaryAccentColor [
+	^ self ternaryAccentColor adjustBrightness: -0.33
+]
+
+{ #category : 'colors' }
 DarkerDawnColorConfigurator >> desktopColor [
 	^ Color black
 ]
@@ -101,6 +117,11 @@ DarkerDawnColorConfigurator >> lightBackgroundColor [
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> lightBaseColor [
 	^ self baseColor adjustBrightness: 0.025
+]
+
+{ #category : 'colors' }
+DarkerDawnColorConfigurator >> lightButtonColor [
+	^ self buttonColor lighter lighter
 ]
 
 { #category : 'colors' }
@@ -134,8 +155,18 @@ DarkerDawnColorConfigurator >> scrollbarPressedThumbFillStyleFor: aScrollbar [
 ]
 
 { #category : 'colors' }
+DarkerDawnColorConfigurator >> secondaryAccentColor [
+	^ Color r: 16r18 g: 16r55 b: 16rBC range: 16rFF
+]
+
+{ #category : 'colors' }
 DarkerDawnColorConfigurator >> secondarySelectionColor [
 	^ self selectionColor darker
+]
+
+{ #category : 'colors' }
+DarkerDawnColorConfigurator >> selectedButtonColor [
+	^ Color r: 16rC9 g: 16r85 b: 16r04 range: 16rFF
 ]
 
 { #category : 'colors' }
@@ -152,6 +183,11 @@ DarkerDawnColorConfigurator >> taskbarItemLabelColorForCollapsed: aButton [
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> taskbarItemLabelColorForExpanded: aButton [
 	^ self textColor
+]
+
+{ #category : 'colors' }
+DarkerDawnColorConfigurator >> ternaryAccentColor [
+	^ Color r: 16r8E g: 16r21 b: 16r77 range: 16rFF
 ]
 
 { #category : 'colors' }
