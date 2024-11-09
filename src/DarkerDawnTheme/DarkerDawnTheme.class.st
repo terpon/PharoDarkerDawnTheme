@@ -54,6 +54,12 @@ DarkerDawnTheme >> fadedBackgroundWindows [
 	^ true
 ]
 
+{ #category : 'actions' }
+DarkerDawnTheme >> install [
+<script: 'self beCurrent'>
+	self class beCurrent
+]
+
 { #category : 'accessing' }
 DarkerDawnTheme >> menuSelectionTextColor [ 
 	^ self textColor darker	
