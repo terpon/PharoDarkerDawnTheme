@@ -57,7 +57,11 @@ DarkerDawnTheme >> fadedBackgroundWindows [
 { #category : 'actions' }
 DarkerDawnTheme >> install [
 <script: 'self beCurrent'>
-	self class beCurrent
+	| iconPack |
+	iconPack := ThemeIcons named: 'darkerDawn'.
+	iconPack url: 'https://github.com/terpon/pharo-icon-packs/archive/refs/tags/darkDawn-pharo13dev-1.zip'.
+	iconPack downloadFromUrl.
+	ThemeIcons current: iconPack.	self class beCurrent
 ]
 
 { #category : 'accessing' }
