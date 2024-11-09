@@ -20,7 +20,7 @@ DarkerDawnSvgRasterizer >> convert: anIconName size: aSize from: aSource to: aDe
 	aDestination ensureCreateDirectory.
 	
 	sourceSVGReference := aSource / (anIconName , '.svg').
-	sourceSVGReference exists ifFalse: [ FileDoesNotExistException signalWith: sourceSVGReference ].
+	sourceSVGReference exists ifFalse: [ FileDoesNotExistException signalWith: sourceSVGReference. ^ self ].
 	arguments := { 
 		targetPNGReference fullName. 
 		aSize x rounded asString. 

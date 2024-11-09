@@ -58,7 +58,7 @@ DarkerDawnSvgColorizer >> convert: anIconName from: aSource to: aDestination [
 	dstFile exists ifTrue: [ ^ self  ].
 	
 	srcFile := aSource / name.
-	srcFile exists ifFalse: [ FileDoesNotExistException signalWith: srcFile ].
+	srcFile exists ifFalse: [ FileDoesNotExistException signalWith: srcFile. ^ self ].
 	
 	dst := dstFile writeStream.
 		[ (ZnFastLineReader on: srcFile readStream) linesDo: [ :line |
