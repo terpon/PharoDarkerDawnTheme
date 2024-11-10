@@ -85,6 +85,12 @@ DarkerDawnTheme >> newFormSetsForScale: scale [
 		yourself
 ]
 
+{ #category : 'colors' }
+DarkerDawnTheme >> paginatorSelectionColor [
+
+	^ colorPalette paginatorSelectionColor 
+]
+
 { #category : 'fill-styles' }
 DarkerDawnTheme >> progressBarProgressFillColor [
 

@@ -140,6 +140,11 @@ DarkerDawnColorConfigurator >> menuTitleColor [
 	^ self lightBackgroundColor 
 ]
 
+{ #category : 'colors' }
+DarkerDawnColorConfigurator >> paginatorSelectionColor [
+	^ self darkButtonColor alpha: 0.8 
+]
+
 { #category : 'scrollbars' }
 DarkerDawnColorConfigurator >> scrollbarNormalFillStyleFor: aScrollbar [
 	"Return the normal scrollbar fillStyle for the given scrollbar."
