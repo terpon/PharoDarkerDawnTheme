@@ -140,18 +140,11 @@ DarkerDawnColorConfigurator >> menuTitleColor [
 	^ self lightBackgroundColor 
 ]
 
-{ #category : 'colors' }
+{ #category : 'scrollbars' }
 DarkerDawnColorConfigurator >> scrollbarNormalFillStyleFor: aScrollbar [
 	"Return the normal scrollbar fillStyle for the given scrollbar."
 	
-	^ SolidFillStyle color: self  darkBaseColor 
-]
-
-{ #category : 'scrollbars' }
-DarkerDawnColorConfigurator >> scrollbarPressedThumbFillStyleFor: aScrollbar [
-	"Return the pressed scrollbar thumb fillStyle for the given scrollbar."
-
-	^ SolidFillStyle color: self  lightBaseColor 
+	^ SolidFillStyle color: self lightBaseColor 
 ]
 
 { #category : 'colors' }

@@ -91,6 +91,12 @@ DarkerDawnTheme >> progressBarProgressFillColor [
 	^ self  borderColor darker
 ]
 
+{ #category : 'fill-styles - scrollbars' }
+DarkerDawnTheme >> scrollbarNormalThumbFillStyleFor: aScrollbar [
+	"Return the normal scrollbar fillStyle for the given scrollbar."
+	^ SolidFillStyle color: self darkButtonColor
+]
+
 { #category : 'defaults' }
 DarkerDawnTheme >> shStyleTableName [
 	^ #darkerDawnStyleTable
