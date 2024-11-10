@@ -101,7 +101,7 @@ DarkerDawnTheme >> tabColor [
 	^ self  baseColor
 ]
 
-{ #category : 'fill-styles-buttons' }
+{ #category : 'fill-styles - buttons' }
 DarkerDawnTheme >> tabLabelNormalFillStyleFor: aTabLabel [
 	"Return the normal button fillStyle for the given button."
 	

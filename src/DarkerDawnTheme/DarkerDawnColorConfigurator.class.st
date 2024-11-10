@@ -147,7 +147,7 @@ DarkerDawnColorConfigurator >> scrollbarNormalFillStyleFor: aScrollbar [
 	^ SolidFillStyle color: self  darkBaseColor 
 ]
 
-{ #category : 'fill-styles - scrollbars' }
+{ #category : 'scrollbars' }
 DarkerDawnColorConfigurator >> scrollbarPressedThumbFillStyleFor: aScrollbar [
 	"Return the pressed scrollbar thumb fillStyle for the given scrollbar."
 
