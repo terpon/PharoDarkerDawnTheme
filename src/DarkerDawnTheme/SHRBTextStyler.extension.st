@@ -7,145 +7,107 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 	Multiple emphases can be specified using an array e.g. #(bold italic).
 	If emphasis is not specified, #normal will be used.
 	if pixel height is not specified , then the editor font size will be used.
-	
-	This style is inspired on darkula theme from eclipse: http://eclipsecolorthemes.org/?view=theme&id=15515.  
 	"
 	<styleTable: 'Darker dawn'>
 
  ^ #(
 			"(symbol color [emphasisSymbolOrArray [textStyleName [pixelHeight]]])" 
+
+			"default"
 			(default 								white)
-			(invalid 								'EE3F08' bold)
-			(excessCode 							'EE3F08' bold)
-			
-			(comment 								'72725e')
-			(unfinishedComment 				'72725e' italic)
-			
-			(#'$' 									'ef29ef')
-			(character 							'ef29ef')
-			(integer 								'E8E187')
-			(number 								'E8E187')
 
-			(#- 									'8ae234')
-			(symbol 								'FFA180') 
-			(stringSymbol 						'FFA180') 
-			(literalArray 						white)
-
-			(string 								'cacda6')									
-			(unfinishedString 					'cacda6' italic)
-
-			(assignment 							nil bold)
-			(ansiAssignment 					nil bold)
-										
-			(literal 								nil italic)
-												
-			(keyword 								'729fcf')
-			(binary 								'729fcf') 
-			(unary 								'729fcf')
-										
-			(#true 								'9ffc3d')
-			(#false 								'629928')
+			"reservedWords"
+			(#true 									'9FFC3D')
+			(#false 									'629928')
 			(#nil 									'629928')
-													
-			(#self 								'ECC284' bold)
-			(#super								'ECC284' bold)
+			(#self 									'ECC284')
+			(#super									'ECC284')
 			(#thisContext 						'ECC284' bold)
-			(#return 								'ECC284' bold)
-												
-			(patternArg 							'ECC284' italic) 
-			(methodArg 							'ECC284' italic)
-			(blockPatternArg 					'ECC284' italic)
-			(blockArg 							'ECC284' italic)
-			(argument 							'ECC284' italic)
-			(blockTempVar 						'ECC284' italic)
-			(blockPatternTempVar 				'ECC284' italic)
-								
-			(instVar 								'ECC284')
-			(workspaceVar 						'ECC284' italic)
-		
-			(tempVar 								'ECC284' italic)
-			(patternTempVar 					'ECC284' italic)
 
-			(poolConstant 						'A7E2ED' bold)
-			(classVar 							'CEEAA7' bold)
-			(globalVar 							'fcaf3e' bold)
-												
-			(incompleteIdentifier 			'E8E2B7' italic)
-			(incompleteKeyword 				'E8E2B7' italic)
-			(incompleteBinary 					'E8E2B7' italic) 
-			(incompleteUnary 					'E8E2B7' italic)
-				
-			(undefinedIdentifier 				'EE3F08' bold)						
-			(undefinedKeyword 					'EE3F08' bold)
-			(undefinedBinary 					'EE3F08' bold) 
-			(undefinedUnary 					'EE3F08' bold) 
+			"primitiveTypes"
+			(character 							'EFEF29')
+			(number 								'E8E187')
+			(symbol 									'FA9160')
+			(string 									'CACDA6')
+
+			"selectorPatterns & messageSends"
+			(patternSelector 					'729FCF')
+			(selector 								white)
+			(incompleteSelector					'E8E2B7')
+
+			"args"
+			(patternArg 							'ECC284') 
+			(blockPatternArg 					'ECC284')
+			(blockArg 								'ECC284')
+			(argument 								'ECC284')
 			
-			(patternKeyword 					'729fcf' bold)
-			(patternBinary 						'729fcf' bold)
-			(patternUnary 						'729fcf' bold) 
-			(blockArgColon 						'ECC284' italic)
+			"variable"
+			(blockTempVar 						'ECC284')
+			(blockPatternTempVar 				'ECC284')
+			(tempVar 								'ECC284')
+			(patternTempVar 					'ECC284')
+			(incompleteIdentifier 				'E8E2B7')
 
-			(leftParenthesis 					white)
-			(rightParenthesis 					white)
-			(leftParenthesis1 					(green muchLighter))
-			(rightParenthesis1 				(green muchLighter))
-			(leftParenthesis2 					(magenta muchLighter))
-			(rightParenthesis2 				(magenta muchLighter))
-			(leftParenthesis3 					(red muchLighter))
-			(rightParenthesis3 				(red muchLighter))
-			(leftParenthesis4 					(green lighter))
-			(rightParenthesis4 				(green lighter))
-			(leftParenthesis5 					(orange lighter))
-			(rightParenthesis5 				(orange lighter))
-			(leftParenthesis6 					(magenta lighter))
-			(rightParenthesis6 				(magenta lighter))
-			(leftParenthesis7 					blue)
-			(rightParenthesis7 				blue)
+			"instanceVar"
+			(instVar 								'ECC284')
+			(classVar 								'CEEAA7' bold)
 
-			(blockStart 							white bold)
-			(blockEnd 							white bold)
-			(blockStart1 						(green muchLighter))
-			(blockEnd1 							(green muchLighter))
-			(blockStart2 						(magenta muchLighter))
-			(blockEnd2 							(magenta muchLighter))
-			(blockStart3 						(red muchLighter))
-			(blockEnd3 							(red muchLighter))
-			(blockStart4 						(green lighter))
-			(blockEnd4 							(green lighter))
-			(blockStart5 						(orange lighter))
-			(blockEnd5 							(orange lighter))
-			(blockStart6 						(magenta lighter))
-			(blockEnd6 							(magenta lighter))
-			(blockStart7 						blue)
-			(blockEnd7 							blue) 
+			"globalVar"
+			(globalVar 							'FCAF3E' bold)
+			(poolConstant 						'A7E2ED' bold)
 
-			(arrayStart 							white)
-			(arrayEnd 							white)
-			(arrayStart1 						white)
-			(arrayEnd1 							white)
+			"comment"
+			(comment 								'82825F')
 
-			(byteArrayStart 					'8BEDFF')
+			"error"
+			(invalid 									'EE3F08' bold)
+			(undefinedSelector 					'EE3F08')
+			(undefinedIdentifier 				'EE5F08')
+
+			"syntax"							
+			(return 									'ECC284')
+			(blockArgColon 						'ECC284')
+
+			(parenthesis 							white)
+			(parenthesis1 						(green muchLighter))
+			(parenthesis2 						(magenta muchLighter))
+			(parenthesis3 						(red muchLighter))
+			(parenthesis4 						(green lighter))
+			(parenthesis5 						(orange lighter))
+			(parenthesis6 						(magenta lighter))
+			(parenthesis7 						blue)
+
+			(block 									white)
+			(block1 									(green muchLighter))
+			(block2 									(magenta muchLighter))
+			(block3 									(red muchLighter))
+			(block4 									(green lighter))
+			(block5 									(orange lighter))
+			(block6 									(magenta lighter))
+			(block7 									blue)
+
+			(byteArrayStart 						'8BEDFF')
 			(byteArrayEnd 						'8BEDFF')
-			(byteArrayStart1 					'8BEDFF')
-			(byteArrayEnd1 						'8BEDFF')
+			(byteArrayStart1 					'6BCDFF')
+			(byteArrayEnd1 						'6BCDFF')
 
-			(leftBrace 							white)
-			(rightBrace 							white)
-			(cascadeSeparator 					white bold)
-			(statementSeparator 				white bold)
+			(brace 									white)
+			(brace1 									(green muchLighter))
+			(brace2 									(magenta muchLighter))
+			(brace3 									(red muchLighter))
+			(brace4 									(green lighter))
+			(brace5 									(orange lighter))
+			(brace6 									(magenta lighter))
+			(brace7 									blue)
+
+			(cascadeSeparator 					white)
+			(statementSeparator 				white)
 			(methodTempBar 						white)
 			(blockTempBar 						white)
 			(blockArgsBar 						white)
-										
-			(externalCallType 								white)
-			(externalCallTypePointerIndicator 		white)
-			(primitiveOrExternalCallStart 				white bold)
-			(primitiveOrExternalCallEnd 				white bold)
-			(primitive 										'B4DD6E')
-			(pragmaKeyword 									'B4DD6E')
-			(pragmaUnary 									'B4DD6E')
-			(pragmaBinary 									'B4DD6E') 
-			(externalFunctionCallingConvention 		'B4DD6E' bold)
-			(module 											'B4DD6E' bold)
+
+			"not used?"										
+			(primitive 								'B4DD6E')
+			(pragma 								'B4DD6E')
     )
 ]
