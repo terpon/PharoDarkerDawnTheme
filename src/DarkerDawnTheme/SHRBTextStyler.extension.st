@@ -20,19 +20,19 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(#true 									'9FFC3D')
 			(#false 									'629928')
 			(#nil 									'629928')
-			(#self 									'ECC284')
-			(#super									'ECC284')
-			(#thisContext 						'ECC284' bold)
+			(#self 									'5577EF')
+			(#super									'5577EF')
+			(#thisContext 						'5577EF' bold)
 
 			"primitiveTypes"
 			(character 							'EFEF29')
 			(number 								'E8E187')
 			(symbol 									'FA9160')
-			(string 									'CACDA6')
+			(string 									'CCCFA6')
 
 			"selectorPatterns & messageSends"
 			(patternSelector 					'729FCF')
-			(selector 								white)
+			(selector 								'FFFFE0')
 			(incompleteSelector					'E8E2B7')
 
 			"args"
@@ -49,7 +49,7 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(incompleteIdentifier 				'E8E2B7')
 
 			"instanceVar"
-			(instVar 								'ECC284')
+			(instVar 								'8AB9CF')
 			(classVar 								'CEEAA7' bold)
 
 			"globalVar"
@@ -57,7 +57,7 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(poolConstant 						'A7E2ED' bold)
 
 			"comment"
-			(comment 								'82825F')
+			(comment 								'888860')
 
 			"error"
 			(invalid 									'EE3F08' bold)
@@ -65,7 +65,7 @@ SHRBTextStyler class >> darkerDawnStyleTable [
 			(undefinedIdentifier 				'EE5F08')
 
 			"syntax"							
-			(return 									'ECC284')
+			(return 									'FCBF67')
 			(blockArgColon 						'ECC284')
 
 			(parenthesis 							white)

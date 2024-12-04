@@ -54,7 +54,7 @@ DarkerDawnColorConfigurator >> basePassiveBackgroundColor [
 
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> baseSelectionColor [
-	^ Color r: 16r49 g: 16r48 b: 16r3E range: 16rFF
+	^ Color r: 16r67 g: 16r63 b: 16r2F range: 16rFF
 ]
 
 { #category : 'colors' }
@@ -159,7 +159,7 @@ DarkerDawnColorConfigurator >> secondaryAccentColor [
 
 { #category : 'colors' }
 DarkerDawnColorConfigurator >> secondarySelectionColor [
-	^ self selectionColor darker
+	^ self selectionColor muchDarker
 ]
 
 { #category : 'colors' }
